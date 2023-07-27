@@ -32,7 +32,16 @@
   align-items: center;
   justify-content: center;
 }
-
+.progress-bar {
+  height: 25px;
+  margin: 30px 0px;
+  max-width: 100%;
+  background-color: blue;
+  transition: width 0.1s;
+}
+.speed-value {
+  color: palevioletred;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
