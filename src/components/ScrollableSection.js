@@ -1,37 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
+
+import useScrollSpeed from "./hooks/useScrollSpeed";
 import LoremIpsum from "./LoremIpsum";
+
 import "../App.css";
 
 const ScrollableSection = () => {
-  const [scrollSpeed, setScrollSpeed] = useState(0);
-  const prevScrollTime = useRef(0);
-  const prevScrollY = useRef(0);
-
-  const handleScroll = (event) => {
-    const currentScrollY = event.currentTarget.scrollTop;
-    const currentTime = performance.now();
-
-    // Calculate time passed and distance scrolled since the previous scroll event
-    const timePassed = currentTime - prevScrollTime.current;
-    const distanceScrolled = Math.abs(currentScrollY - prevScrollY.current);
-
-    // Calculate the scroll speed (pixels per millisecond)
-    const speed = distanceScrolled / timePassed;
-
-    // Update the scroll speed state
-    setScrollSpeed(speed);
-
-    // Update previous scrollY and scroll time for the next event
-    prevScrollY.current = currentScrollY;
-    prevScrollTime.current = currentTime;
-  };
+  const scrollableRef = useRef(null);
+  const scrollSpeed = useScrollSpeed(scrollableRef);
 
   return (
     <section className="scroll-area">
       <div className="scroll-idicator">
         <span>Scroll speed is: </span>
         <span className="speed-value">{scrollSpeed.toFixed(2)} </span>
-        <span> pixels per second</span>
+        <span>pixels per millisecond</span>
         <div
           className="progress-bar"
           style={{
@@ -39,7 +22,7 @@ const ScrollableSection = () => {
           }}
         />
       </div>
-      <div className="scrollable-section" onScroll={handleScroll}>
+      <div className="scrollable-section" ref={scrollableRef}>
         <LoremIpsum />
       </div>
     </section>
