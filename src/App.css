@@ -40,7 +40,8 @@
   margin: 30px 0px;
   max-width: 100%;
   background-color: #ff7f50;
-  transition: width 0.1s;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
 }
 .speed-value {
   color: #ffd700;
