@@ -11,4 +11,4 @@ yarn start || npm start
 
 ```
 
-🎉 Made with ♥️ by Mohamed Abdelnasser Abou🎉
+🎉 Made with ♥️ by Mohamed Abdelnasser Abdou 🎉
